@@ -1,4 +1,4 @@
-package model.domain;
+package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 import java.util.Date;
 

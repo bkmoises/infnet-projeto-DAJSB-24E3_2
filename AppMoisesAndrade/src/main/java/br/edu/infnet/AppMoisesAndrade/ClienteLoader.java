@@ -1,6 +1,6 @@
 package br.edu.infnet.AppMoisesAndrade;
 
-import model.domain.Cliente;
+import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Component
 public class ClienteLoader implements ApplicationRunner {

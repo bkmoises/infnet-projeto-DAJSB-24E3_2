@@ -1,4 +1,4 @@
-package model.domain;
+package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 public class Avaliacao {
     private float  nota;
