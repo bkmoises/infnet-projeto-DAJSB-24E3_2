@@ -10,12 +10,6 @@ public class Serie extends Conteudo {
 
     }
 
-    public Serie(String titulo, String genero, int anolancamento, int duracao, List<Avaliacao> avaliacoes, int temporada, int episodio) {
-        super(titulo, genero, anolancamento, duracao, avaliacoes);
-        this.temporada = temporada;
-        this.episodio = episodio;
-    }
-
     public int getTemporada() {
         return temporada;
     }

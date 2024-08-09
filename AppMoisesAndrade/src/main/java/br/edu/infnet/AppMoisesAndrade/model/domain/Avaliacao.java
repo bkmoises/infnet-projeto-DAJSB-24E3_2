@@ -1,18 +1,13 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 public class Avaliacao {
+    private Integer id;
     private float  nota;
     private String comentario;
     private Cliente cliente;
 
     public Avaliacao() {
 
-    }
-
-    public Avaliacao(float nota, String comentario, Cliente cliente) {
-        this.nota = nota;
-        this.comentario = comentario;
-        this.cliente = cliente;
     }
 
     public float getNota() {
@@ -39,12 +34,21 @@ public class Avaliacao {
         this.cliente = cliente;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Avaliacao{" +
-                "nota='" + nota + '\'' +
+                "id='" + id + '\'' +
+                ", nota='" + nota + '\'' +
                 ", comentario='" + comentario + '\'' +
-                ", cliente='" + cliente.toString() + '\'' +
+                ", cliente='" + cliente + '\'' +
                 "}";
     }
 }

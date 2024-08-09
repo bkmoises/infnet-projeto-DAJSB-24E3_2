@@ -1,8 +1,10 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Conteudo {
+    private Integer id;
     private String titulo;
     private String genero;
     private int anolancamento;
@@ -10,15 +12,7 @@ public class Conteudo {
     private List<Avaliacao> avaliacoes;
 
     public Conteudo() {
-
-    }
-
-    public Conteudo(String titulo, String genero, int anolancamento, int duracao, List<Avaliacao> avaliacoes) {
-        this.titulo = titulo;
-        this.genero = genero;
-        this.anolancamento = anolancamento;
-        this.duracao = duracao;
-        this.avaliacoes = avaliacoes;
+        avaliacoes = new ArrayList<Avaliacao>();
     }
 
     public String getTitulo() {
@@ -61,9 +55,18 @@ public class Conteudo {
         this.avaliacoes = avaliacoes;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "titulo='" + titulo + '\'' +
+        return "id='" + id + '\'' +
+                ", titulo='" + titulo + '\'' +
                 ", genero='" + genero + '\'' +
                 ", anoLancamento='" + anolancamento + '\'' +
                 ", duracao='" + duracao + '\'' +

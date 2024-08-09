@@ -9,47 +9,60 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class AvaliacaoLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Map<Integer, Avaliacao> mapa = new HashMap<Integer, Avaliacao>();
+        Integer id = 0;
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
-        FileReader fileCliente = new FileReader("cliente.txt");
-        BufferedReader dataCliente = new BufferedReader(fileCliente);
+        FileReader file = new FileReader("avaliacao.txt");
+        BufferedReader data = new BufferedReader(file);
 
-        String linhaCliente = dataCliente.readLine();
+        String linha = data.readLine();
+        String[] campos = null;
 
-        while(linhaCliente != null) {
-            String[] camposCliente = linhaCliente.split(";");
+        Cliente cliente = null;
 
-            Cliente cliente = new Cliente();
-            cliente.setNome(camposCliente[0]);
-            cliente.setCpf(camposCliente[1]);
-            cliente.setEmail(camposCliente[2]);
-            cliente.setDataNascimento(dateFormat.parse(camposCliente[3]));
-            cliente.setAssinante(Boolean.valueOf(camposCliente[4]));
+        while(linha != null) {
 
-            FileReader fileAvaliacao = new FileReader("avaliacao.txt");
-            BufferedReader dataAvaliacao = new BufferedReader(fileAvaliacao);
+            campos = linha.split(";");
 
-            String linhaAvaliacao = dataAvaliacao.readLine();
+            switch (campos[0].toUpperCase()) {
+                case "C":
+                    cliente = new Cliente();
+                    cliente.setNome(campos[1]);
+                    cliente.setCpf(campos[2]);
+                    cliente.setEmail(campos[3]);
+                    cliente.setDataNascimento(dateFormat.parse(campos[4]));
+                    cliente.setAssinante(Boolean.valueOf(campos[5]));
+                break;
 
-            while(linhaAvaliacao != null) {
-                String[] camposAvaliacao = linhaAvaliacao.split(";");
+                case "A":
+                    Avaliacao avaliacao = new Avaliacao();
+                    avaliacao.setId(id++);
+                    avaliacao.setNota(Float.valueOf(campos[1]));
+                    avaliacao.setComentario(campos[2]);
+                    avaliacao.setCliente(cliente);
 
-                Avaliacao avaliacao = new Avaliacao();
-                avaliacao.setNota(Float.valueOf(camposAvaliacao[0]));
-                avaliacao.setComentario(camposAvaliacao[1]);
-                avaliacao.setCliente(cliente);
+                    mapa.put(avaliacao.getId(), avaliacao);
+                break;
 
-                linhaAvaliacao = dataAvaliacao.readLine();
-
-                System.out.println("[AVALIACAO] " + avaliacao);
+                default:
+                    break;
             }
 
-            linhaCliente = dataCliente.readLine();
+            linha = data.readLine();
         }
+
+        for(Avaliacao avaliacao : mapa.values()) {
+            System.out.println("[AVALIACAO] " + avaliacao);
+        }
+
     }
 }

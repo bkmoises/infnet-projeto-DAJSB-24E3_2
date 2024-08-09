@@ -1,1 +1,9 @@
-O Silencio dos Inocentes;Terror;1991;118;Melhor Ator, Melhor Atriz, Melhor Roteiro Adaptado
+F;O Silencio dos Inocentes;Terror;1991;118;Melhor Ator, Melhor Atriz, Melhor Roteiro Adaptado
+C;Moisés;123456789;mail@mail.com;28081996;true
+A;4.5;Adorei, enredo envolvente!
+F;A Origem;Ficção Científica;2010;148;Melhor Fotografia, Melhores Efeitos Visuais, Melhor Trilha Sonora
+C;Ana Silva;987654321;ana.silva@mail.com;15051992;true
+A;3.0;Bem mediano, final previsível.
+F;O Poderoso Chefão;Crime;1972;175;Melhor Filme, Melhor Roteiro Adaptado, Melhor Ator
+C;Carlos Mendes;112233445;cmendes@mail.com;01101988;false
+A;5.0;Incrível! Atuações impecáveis e ótima direção!

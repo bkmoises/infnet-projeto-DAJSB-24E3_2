@@ -1,1 +1,9 @@
-Game of Thrones;Drama;2011;58;4;10
+S;Stranger Things;Ficção Científica;2016;51;4;9
+C;Moisés;123456789;mail@mail.com;28081996;true
+A;4.5;Adorei, enredo envolvente!
+S;Breaking Bad;Crime;2008;47;5;16
+C;Ana Silva;987654321;ana.silva@mail.com;15051992;true
+A;3.0;Bem mediano, final previsível.
+S;Game of Thrones;Drama;2011;58;4;10
+C;Carlos Mendes;112233445;cmendes@mail.com;01101988;false
+A;5.0;Incrível! Atuações impecáveis e ótima direção!

@@ -3,6 +3,7 @@ package br.edu.infnet.AppMoisesAndrade.model.domain;
 import java.util.Date;
 
 public class Cliente {
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
@@ -11,14 +12,6 @@ public class Cliente {
 
     public Cliente() {
 
-    }
-
-    public Cliente(String nome, String cpf, String email, Date dataNascimento, Boolean assinante) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.email = email;
-        this.dataNascimento = dataNascimento;
-        this.assinante = assinante;
     }
 
     public String getNome() {
@@ -61,10 +54,19 @@ public class Cliente {
         this.assinante = assinante;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +
-                "nome='" + nome + '\'' +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
                 ", dataNascimento='" + dataNascimento + '\'' +

@@ -8,11 +8,16 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class ClienteLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Map<Integer, Cliente> mapa = new HashMap<Integer, Cliente>();
+        Integer id = 0;
+
         FileReader file = new FileReader("cliente.txt");
         BufferedReader data = new BufferedReader(file);
 
@@ -25,15 +30,22 @@ public class ClienteLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Cliente cliente = new Cliente();
+
+            cliente.setId(id++);
             cliente.setNome(campos[0]);
             cliente.setCpf(campos[1]);
             cliente.setEmail(campos[2]);
             cliente.setDataNascimento(dateFormat.parse(campos[3]));
             cliente.setAssinante(Boolean.valueOf(campos[4]));
 
-            System.out.println("[CLIENTE] " + cliente);
+            mapa.put(cliente.getId(), cliente);
 
             linha = data.readLine();
         }
+
+        for(Cliente cliente : mapa.values()) {
+            System.out.println("[CLIENTE] " + cliente);
+        }
+
     }
 }

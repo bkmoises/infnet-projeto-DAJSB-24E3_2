@@ -10,70 +10,71 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class FilmeLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Map<Integer, Filme> mapa = new HashMap<Integer, Filme>();
+        Integer id = 0;
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
-        FileReader fileCliente = new FileReader("cliente.txt");
-        BufferedReader dataCliente = new BufferedReader(fileCliente);
+        FileReader file = new FileReader("filme.txt");
+        BufferedReader data = new BufferedReader(file);
 
-        String linhaCliente = dataCliente.readLine();
+        String linha = data.readLine();
+        String[] campos = null;
 
-        while(linhaCliente != null) {
-            String[] camposCliente = linhaCliente.split(";");
+        Cliente cliente = null;
+        Avaliacao avaliacao = null;
+        Filme filme = null;
 
-            Cliente cliente = new Cliente();
-            cliente.setNome(camposCliente[0]);
-            cliente.setCpf(camposCliente[1]);
-            cliente.setEmail(camposCliente[2]);
-            cliente.setDataNascimento(dateFormat.parse(camposCliente[3]));
-            cliente.setAssinante(Boolean.valueOf(camposCliente[4]));
+        while(linha != null) {
 
-            FileReader fileAvaliacao = new FileReader("avaliacao.txt");
-            BufferedReader dataAvaliacao = new BufferedReader(fileAvaliacao);
+            campos = linha.split(";");
 
-            String linhaAvaliacao = dataAvaliacao.readLine();
+            switch (campos[0].toUpperCase()) {
+                case "C":
+                    cliente = new Cliente();
+                    cliente.setNome(campos[1]);
+                    cliente.setCpf(campos[2]);
+                    cliente.setEmail(campos[3]);
+                    cliente.setDataNascimento(dateFormat.parse(campos[4]));
+                    cliente.setAssinante(Boolean.valueOf(campos[5]));
+                    break;
 
-            while(linhaAvaliacao != null) {
-                String[] camposAvaliacao = linhaAvaliacao.split(";");
+                case "A":
+                    avaliacao = new Avaliacao();
+                    avaliacao.setNota(Float.valueOf(campos[1]));
+                    avaliacao.setComentario(campos[2]);
+                    avaliacao.setCliente(cliente);
+                    filme.getAvaliacoes().add(avaliacao);
+                    break;
 
-                Avaliacao avaliacao = new Avaliacao();
-                avaliacao.setNota(Float.valueOf(camposAvaliacao[0]));
-                avaliacao.setComentario(camposAvaliacao[1]);
-                avaliacao.setCliente(cliente);
+                case "F":
+                    filme = new Filme();
+                    filme.setId(id++);
+                    filme.setTitulo(campos[1]);
+                    filme.setGenero(campos[2]);
+                    filme.setAnolancamento(Integer.valueOf(campos[3]));
+                    filme.setDuracao(Integer.valueOf(campos[4]));
+                    filme.getOscar().addAll(List.of(campos[5].split(",")));
 
-                FileReader fileFilme = new FileReader("filme.txt");
-                BufferedReader dataFilme = new BufferedReader(fileFilme);
+                    mapa.put(filme.getId(), filme);
 
-                String linhaFilme = dataFilme.readLine();
-
-                while(linhaFilme != null) {
-                    String[] camposFilme = linhaFilme.split(";");
-
-                    Filme filme = new Filme();
-                    filme.setTitulo(camposFilme[0]);
-                    filme.setGenero(camposFilme[1]);
-                    filme.setAnolancamento(Integer.valueOf(camposFilme[2]));
-                    filme.setDuracao(Integer.valueOf(camposFilme[3]));
-                    filme.setAvaliacoes(new ArrayList<>(Arrays.asList(avaliacao)));
-                    filme.setOscar(List.of(camposFilme[4].split(",")));
-
-                    linhaFilme = dataFilme.readLine();
-
-                    System.out.println("[FILME] " + filme);
-                }
-
-                linhaAvaliacao = dataAvaliacao.readLine();
+                default:
+                    break;
             }
 
-            linhaCliente = dataCliente.readLine();
+            linha = data.readLine();
         }
+
+        for(Filme f : mapa.values()) {
+            System.out.println("[FILME] " + f);
+        }
+
     }
 }

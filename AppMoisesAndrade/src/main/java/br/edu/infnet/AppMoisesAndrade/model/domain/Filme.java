@@ -1,17 +1,13 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Filme extends Conteudo {
     private List<String> oscar;
 
     public Filme() {
-
-    }
-
-    public Filme(String titulo, String genero, int anolancamento, int duracao, List<Avaliacao> avaliacoes, List<String> oscar) {
-        super(titulo, genero, anolancamento, duracao, avaliacoes);
-        this.oscar = oscar;
+        oscar = new ArrayList<String>();
     }
 
     public List<String> getOscar() {
