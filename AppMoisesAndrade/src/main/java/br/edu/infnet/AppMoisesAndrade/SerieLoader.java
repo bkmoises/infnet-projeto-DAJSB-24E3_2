@@ -4,6 +4,8 @@ import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Serie;
+import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -15,10 +17,12 @@ import java.util.*;
 
 @Component
 public class SerieLoader implements ApplicationRunner {
+
+    @Autowired
+    private SerieService serieService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Map<Integer, Serie> mapa = new HashMap<Integer, Serie>();
-        Integer id = 0;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
@@ -56,7 +60,6 @@ public class SerieLoader implements ApplicationRunner {
 
                 case "S":
                     serie = new Serie();
-                    serie.setId(id++);
                     serie.setTitulo(campos[1]);
                     serie.setGenero(campos[2]);
                     serie.setAnolancamento(Integer.valueOf(campos[3]));
@@ -64,7 +67,7 @@ public class SerieLoader implements ApplicationRunner {
                     serie.setTemporada(Integer.valueOf(campos[5]));
                     serie.setEpisodio(Integer.valueOf(campos[6]));
 
-                    mapa.put(serie.getId(), serie);
+                    serieService.incluir(serie);
 
                 default:
                     break;
@@ -73,7 +76,7 @@ public class SerieLoader implements ApplicationRunner {
             linha = data.readLine();
         }
 
-        for(Serie s : mapa.values()) {
+        for(Serie s : serieService.obterLista()) {
             System.out.println("[SÉRIE] " + s);
         }
     }

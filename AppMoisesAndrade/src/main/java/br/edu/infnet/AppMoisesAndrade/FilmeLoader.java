@@ -3,6 +3,8 @@ package br.edu.infnet.AppMoisesAndrade;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
+import br.edu.infnet.AppMoisesAndrade.model.service.FilmeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -15,10 +17,11 @@ import java.util.*;
 @Component
 public class FilmeLoader implements ApplicationRunner {
 
+    @Autowired
+    private FilmeService filmeService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Map<Integer, Filme> mapa = new HashMap<Integer, Filme>();
-        Integer id = 0;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
@@ -56,14 +59,13 @@ public class FilmeLoader implements ApplicationRunner {
 
                 case "F":
                     filme = new Filme();
-                    filme.setId(id++);
                     filme.setTitulo(campos[1]);
                     filme.setGenero(campos[2]);
                     filme.setAnolancamento(Integer.valueOf(campos[3]));
                     filme.setDuracao(Integer.valueOf(campos[4]));
                     filme.getOscar().addAll(List.of(campos[5].split(",")));
 
-                    mapa.put(filme.getId(), filme);
+                    filmeService.incluir(filme);
 
                 default:
                     break;
@@ -72,7 +74,7 @@ public class FilmeLoader implements ApplicationRunner {
             linha = data.readLine();
         }
 
-        for(Filme f : mapa.values()) {
+        for(Filme f : filmeService.obterLista()) {
             System.out.println("[FILME] " + f);
         }
 

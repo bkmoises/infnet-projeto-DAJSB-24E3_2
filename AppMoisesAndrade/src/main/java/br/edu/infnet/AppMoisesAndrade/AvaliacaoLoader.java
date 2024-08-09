@@ -2,6 +2,8 @@ package br.edu.infnet.AppMoisesAndrade;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
+import br.edu.infnet.AppMoisesAndrade.model.service.AvaliacaoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -14,10 +16,11 @@ import java.util.Map;
 
 @Component
 public class AvaliacaoLoader implements ApplicationRunner {
+    @Autowired
+    private AvaliacaoService avaliacaoService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Map<Integer, Avaliacao> mapa = new HashMap<Integer, Avaliacao>();
-        Integer id = 0;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
@@ -45,12 +48,11 @@ public class AvaliacaoLoader implements ApplicationRunner {
 
                 case "A":
                     Avaliacao avaliacao = new Avaliacao();
-                    avaliacao.setId(id++);
                     avaliacao.setNota(Float.valueOf(campos[1]));
                     avaliacao.setComentario(campos[2]);
                     avaliacao.setCliente(cliente);
 
-                    mapa.put(avaliacao.getId(), avaliacao);
+                    avaliacaoService.incluir(avaliacao);
                 break;
 
                 default:
@@ -60,7 +62,7 @@ public class AvaliacaoLoader implements ApplicationRunner {
             linha = data.readLine();
         }
 
-        for(Avaliacao avaliacao : mapa.values()) {
+        for(Avaliacao avaliacao : avaliacaoService.obterLista()) {
             System.out.println("[AVALIACAO] " + avaliacao);
         }
 

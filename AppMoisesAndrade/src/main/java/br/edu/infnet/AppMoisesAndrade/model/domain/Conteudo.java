@@ -3,7 +3,7 @@ package br.edu.infnet.AppMoisesAndrade.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conteudo {
+public abstract class Conteudo {
     private Integer id;
     private String titulo;
     private String genero;
