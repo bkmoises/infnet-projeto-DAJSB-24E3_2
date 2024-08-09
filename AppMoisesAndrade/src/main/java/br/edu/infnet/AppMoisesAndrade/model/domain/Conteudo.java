@@ -70,6 +70,6 @@ public abstract class Conteudo {
                 ", genero='" + genero + '\'' +
                 ", anoLancamento='" + anolancamento + '\'' +
                 ", duracao='" + duracao + '\'' +
-                ", avaliacoes='" + avaliacoes + '\'';
+                ", avaliacoes='Qtd: " + avaliacoes.size() + "', '" + avaliacoes + '\'';
     }
 }
