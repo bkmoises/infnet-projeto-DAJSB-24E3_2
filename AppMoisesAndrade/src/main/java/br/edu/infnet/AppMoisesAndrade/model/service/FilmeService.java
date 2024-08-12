@@ -21,4 +21,11 @@ public class FilmeService {
         return mapa.values();
     }
 
+    public Filme obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void  remover(Integer id) {
+        mapa.remove(id);
+    }
 }

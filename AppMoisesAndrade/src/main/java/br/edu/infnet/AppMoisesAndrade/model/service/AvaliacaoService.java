@@ -21,4 +21,11 @@ public class AvaliacaoService {
         return mapa.values();
     }
 
+    public Avaliacao obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void  remover(Integer id) {
+        mapa.remove(id);
+    }
 }

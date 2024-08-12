@@ -21,4 +21,11 @@ public class SerieService {
         return mapa.values();
     }
 
+    public Serie obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void  remover(Integer id) {
+        mapa.remove(id);
+    }
 }

@@ -3,8 +3,7 @@ package br.edu.infnet.AppMoisesAndrade.controller;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Serie;
 import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -17,5 +16,22 @@ public class SerieController {
     @GetMapping(value = "/serie")
     public Collection<Serie> listarTodos() {
         return serieService.obterLista();
+    }
+
+    @GetMapping(value = "/serie/{id}")
+    public Serie obterPorId(@PathVariable Integer id) {
+        return serieService.obterPorId(id);
+    }
+
+    @PostMapping(value = "/serie")
+    public Serie incluir(@RequestBody Serie serie) {
+        serieService.incluir(serie);
+        return serie;
+    }
+
+    @DeleteMapping(value = "/serie/{id}")
+    public String remover(@PathVariable Integer id) {
+        serieService.remover(id);
+        return "Elemento id \"" + id + "\" foi removido com sucesso!";
     }
 }

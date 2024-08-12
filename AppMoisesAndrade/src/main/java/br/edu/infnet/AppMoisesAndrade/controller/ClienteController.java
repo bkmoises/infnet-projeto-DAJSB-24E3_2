@@ -32,6 +32,6 @@ public class ClienteController {
     @DeleteMapping(value = "/cliente/{id}")
     public String remover(@PathVariable Integer id) {
         clienteService.remover(id);
-        return "item id \"" + id + "\" foi removido com sucesso!";
+        return "Elemento id \"" + id + "\" foi removido com sucesso!";
     }
 }
