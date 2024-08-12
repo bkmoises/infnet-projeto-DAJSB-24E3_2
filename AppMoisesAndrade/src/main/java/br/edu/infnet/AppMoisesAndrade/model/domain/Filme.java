@@ -21,7 +21,7 @@ public class Filme extends Conteudo {
     @Override
     public String toString() {
         return "Filme{" + super.toString() + '\'' +
-                ", oscar='" + oscar + '\'' +
+                ", oscar='Qtd: " + oscar.size() + "', '" + oscar + '\'' +
                 '}';
     }
 }
