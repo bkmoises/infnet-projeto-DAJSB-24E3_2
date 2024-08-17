@@ -28,4 +28,8 @@ public class AvaliacaoService {
     public void  remover(Integer id) {
         mapa.remove(id);
     }
+
+    public Integer obterQtd() {
+        return mapa.size();
+    }
 }

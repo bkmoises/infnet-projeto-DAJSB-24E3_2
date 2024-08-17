@@ -29,4 +29,7 @@ public class ClienteService {
         mapa.remove(id);
     }
 
+    public Integer obterQtd() {
+        return mapa.size();
+    }
 }
