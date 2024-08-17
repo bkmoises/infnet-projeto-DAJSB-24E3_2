@@ -1,35 +1,38 @@
 package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
+import br.edu.infnet.AppMoisesAndrade.model.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class ClienteService {
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
     private Map<Integer, Cliente> mapa = new HashMap<Integer, Cliente>();
-    private Integer id = 0;
 
     public void incluir(Cliente cliente) {
-        cliente.setId(id++);
-        mapa.put(cliente.getId(), cliente);
+        clienteRepository.save(cliente);
     }
 
-    public Collection<Cliente> obterLista(){
-        return mapa.values();
+    public Iterable<Cliente> obterLista(){
+        return clienteRepository.findAll();
     }
 
     public Cliente obterPorId(Integer id) {
-        return mapa.get(id);
+        return clienteRepository.findById(id).orElse(null);
     }
 
     public void  remover(Integer id) {
-        mapa.remove(id);
+        clienteRepository.deleteById(id);
     }
 
-    public Integer obterQtd() {
-        return mapa.size();
+    public Long obterQtd() {
+        return clienteRepository.count();
     }
 }

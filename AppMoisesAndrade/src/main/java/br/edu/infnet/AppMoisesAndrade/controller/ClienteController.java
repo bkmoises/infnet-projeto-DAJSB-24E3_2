@@ -5,8 +5,6 @@ import br.edu.infnet.AppMoisesAndrade.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 public class ClienteController {
 
@@ -14,7 +12,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping(value = "/cliente")
-    public Collection<Cliente> listarTodos() {
+    public Iterable<Cliente> listarTodos() {
         return clienteService.obterLista();
     }
 
