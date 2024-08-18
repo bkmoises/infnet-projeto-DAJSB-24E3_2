@@ -15,10 +15,6 @@ public class Avaliacao {
     @Transient
     private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "idConteudo")
-    private Conteudo conteudo;
-
     public Avaliacao() {
 
     }
@@ -53,14 +49,6 @@ public class Avaliacao {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Conteudo getConteudo() {
-        return conteudo;
-    }
-
-    public void setConteudo(Conteudo conteudo) {
-        this.conteudo = conteudo;
     }
 
     @Override

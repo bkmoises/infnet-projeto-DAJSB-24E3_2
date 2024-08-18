@@ -18,8 +18,7 @@ public abstract class Conteudo {
     private int anolancamento;
     private int duracao;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "idConteudo")
+    @Transient
     private List<Avaliacao> avaliacoes;
 
     public Conteudo() {
