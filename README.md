@@ -56,6 +56,9 @@ git checkout terceira-entrega
     - Navegue até a classe principal `AppMoisesAndradeApplication.java`.
     - Clique com o botão direito e selecione `Run As > Java Application`.
 
+4. **Utilizando o projeto**:
+    - Abra seu navegador e acesse a URL [http://localhost:8080/](http://localhost:8080/)
+  
 ### Importando Collection no Postman
 
 
