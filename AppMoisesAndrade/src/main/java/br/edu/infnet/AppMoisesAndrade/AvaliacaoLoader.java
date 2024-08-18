@@ -3,6 +3,7 @@ package br.edu.infnet.AppMoisesAndrade;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.service.AvaliacaoService;
+import br.edu.infnet.AppMoisesAndrade.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,12 +19,15 @@ import java.util.Map;
 @Component
 @Order(4)
 public class AvaliacaoLoader implements ApplicationRunner {
+
     @Autowired
     private AvaliacaoService avaliacaoService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
         FileReader file = new FileReader("avaliacao.txt");
@@ -32,34 +36,18 @@ public class AvaliacaoLoader implements ApplicationRunner {
         String linha = data.readLine();
         String[] campos = null;
 
-        Cliente cliente = null;
-
         while(linha != null) {
+            Cliente cliente = new Cliente();
 
             campos = linha.split(";");
 
-            switch (campos[0].toUpperCase()) {
-                case "C":
-                    cliente = new Cliente();
-                    cliente.setNome(campos[1]);
-                    cliente.setCpf(campos[2]);
-                    cliente.setEmail(campos[3]);
-                    cliente.setDataNascimento(dateFormat.parse(campos[4]));
-                    cliente.setAssinante(Boolean.valueOf(campos[5]));
-                break;
+            cliente.setId(Integer.valueOf(campos[2]));
+            Avaliacao avaliacao = new Avaliacao();
+            avaliacao.setNota(Float.valueOf(campos[0]));
+            avaliacao.setComentario(campos[1]);
+            avaliacao.setCliente(cliente);
 
-                case "A":
-                    Avaliacao avaliacao = new Avaliacao();
-                    avaliacao.setNota(Float.valueOf(campos[1]));
-                    avaliacao.setComentario(campos[2]);
-                    avaliacao.setCliente(cliente);
-
-                    avaliacaoService.incluir(avaliacao);
-                break;
-
-                default:
-                    break;
-            }
+            avaliacaoService.incluir(avaliacao);
 
             linha = data.readLine();
         }

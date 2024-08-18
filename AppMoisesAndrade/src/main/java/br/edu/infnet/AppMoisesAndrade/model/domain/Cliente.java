@@ -3,6 +3,7 @@ package br.edu.infnet.AppMoisesAndrade.model.domain;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "TCliente")
@@ -15,6 +16,11 @@ public class Cliente {
     private String email;
     private Date dataNascimento;
     private Boolean assinante;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idCliente")
+    private List<Avaliacao> avaliacoes;
+
 
     public Cliente() {
 
@@ -66,6 +72,14 @@ public class Cliente {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 
     @Override

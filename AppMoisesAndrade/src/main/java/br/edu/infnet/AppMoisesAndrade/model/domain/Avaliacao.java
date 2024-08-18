@@ -12,7 +12,8 @@ public class Avaliacao {
     private float  nota;
     private String comentario;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
     public Avaliacao() {
