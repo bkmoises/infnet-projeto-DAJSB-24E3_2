@@ -2,12 +2,12 @@ package br.edu.infnet.AppMoisesAndrade;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
-import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Serie;
 import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Component
+@Order(3)
 public class SerieLoader implements ApplicationRunner {
 
     @Autowired

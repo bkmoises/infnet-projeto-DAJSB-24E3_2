@@ -5,8 +5,6 @@ import br.edu.infnet.AppMoisesAndrade.model.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 public class FilmeController {
 
@@ -14,7 +12,7 @@ public class FilmeController {
     private FilmeService filmeService;
 
     @GetMapping(value = "/filme")
-    public Collection<Filme> listarTodos() {
+    public Iterable<Filme> listarTodos() {
         return filmeService.obterLista();
     }
 

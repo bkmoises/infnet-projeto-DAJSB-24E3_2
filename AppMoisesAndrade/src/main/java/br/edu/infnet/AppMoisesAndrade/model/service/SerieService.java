@@ -1,35 +1,32 @@
 package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Serie;
+import br.edu.infnet.AppMoisesAndrade.model.repository.SerieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class SerieService {
-    private Map<Integer, Serie> mapa = new HashMap<Integer, Serie>();
-    private Integer id = 0;
+    @Autowired
+    private SerieRepository serieRepository;
 
     public void incluir(Serie serie) {
-        serie.setId(id++);
-        mapa.put(serie.getId(), serie);
+        serieRepository.save(serie);
     }
 
-    public Collection<Serie> obterLista(){
-        return mapa.values();
+    public Iterable<Serie> obterLista(){
+        return serieRepository.findAll();
     }
 
     public Serie obterPorId(Integer id) {
-        return mapa.get(id);
+        return serieRepository.findById(id).orElse(null);
     }
 
     public void  remover(Integer id) {
-        mapa.remove(id);
+        serieRepository.deleteById(id);
     }
 
-    public Integer obterQtd() {
-        return mapa.size();
+    public Long obterQtd() {
+        return serieRepository.count();
     }
 }

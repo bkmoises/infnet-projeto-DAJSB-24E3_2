@@ -1,35 +1,33 @@
 package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
+import br.edu.infnet.AppMoisesAndrade.model.repository.FilmeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class FilmeService {
-    private Map<Integer, Filme> mapa = new HashMap<Integer, Filme>();
-    private Integer id = 0;
+
+    @Autowired
+    private FilmeRepository filmeRepository;
 
     public void incluir(Filme filme) {
-        filme.setId(id++);
-        mapa.put(filme.getId(), filme);
+        filmeRepository.save(filme);
     }
 
-    public Collection<Filme> obterLista(){
-        return mapa.values();
+    public Iterable<Filme> obterLista(){
+        return filmeRepository.findAll();
     }
 
     public Filme obterPorId(Integer id) {
-        return mapa.get(id);
+        return filmeRepository.findById(id).orElse(null);
     }
 
     public void  remover(Integer id) {
-        mapa.remove(id);
+        filmeRepository.deleteById(id);
     }
 
-    public Integer obterQtd() {
-        return mapa.size();
+    public Long obterQtd() {
+        return filmeRepository.count();
     }
 }

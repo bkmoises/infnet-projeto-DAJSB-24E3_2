@@ -1,7 +1,11 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "TSerie")
 public class Serie extends Conteudo {
     private int temporada;
     private int episodio;

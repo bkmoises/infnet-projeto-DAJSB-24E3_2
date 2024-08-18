@@ -1,10 +1,23 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TAvaliacao")
 public class Avaliacao {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private float  nota;
     private String comentario;
+
+    @Transient
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "idConteudo")
+    private Conteudo conteudo;
 
     public Avaliacao() {
 
@@ -40,6 +53,14 @@ public class Avaliacao {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Conteudo getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(Conteudo conteudo) {
+        this.conteudo = conteudo;
     }
 
     @Override

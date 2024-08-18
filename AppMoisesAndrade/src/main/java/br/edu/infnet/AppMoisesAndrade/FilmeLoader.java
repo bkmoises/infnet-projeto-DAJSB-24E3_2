@@ -7,6 +7,7 @@ import br.edu.infnet.AppMoisesAndrade.model.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Component
+@Order(2)
 public class FilmeLoader implements ApplicationRunner {
 
     @Autowired

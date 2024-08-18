@@ -5,8 +5,6 @@ import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 public class SerieController {
 
@@ -14,7 +12,7 @@ public class SerieController {
     private SerieService serieService;
 
     @GetMapping(value = "/serie")
-    public Collection<Serie> listarTodos() {
+    public Iterable<Serie> listarTodos() {
         return serieService.obterLista();
     }
 

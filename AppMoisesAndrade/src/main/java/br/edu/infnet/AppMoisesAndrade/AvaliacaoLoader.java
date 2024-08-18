@@ -6,6 +6,7 @@ import br.edu.infnet.AppMoisesAndrade.model.service.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@Order(4)
 public class AvaliacaoLoader implements ApplicationRunner {
     @Autowired
     private AvaliacaoService avaliacaoService;

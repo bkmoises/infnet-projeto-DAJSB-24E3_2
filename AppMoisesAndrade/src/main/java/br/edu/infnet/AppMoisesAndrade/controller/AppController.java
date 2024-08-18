@@ -1,9 +1,6 @@
 package br.edu.infnet.AppMoisesAndrade.controller;
 
-import br.edu.infnet.AppMoisesAndrade.model.service.AvaliacaoService;
-import br.edu.infnet.AppMoisesAndrade.model.service.ClienteService;
-import br.edu.infnet.AppMoisesAndrade.model.service.FilmeService;
-import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
+import br.edu.infnet.AppMoisesAndrade.model.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +17,8 @@ public class AppController {
     private SerieService serieService;
     @Autowired
     private AvaliacaoService avaliacaoService;
+    @Autowired
+    private ConteudoService conteudoService;
 
     @GetMapping(value = "/")
     public String showHome(Model model) {
@@ -27,7 +26,7 @@ public class AppController {
         model.addAttribute("qtdFilme", filmeService.obterQtd());
         model.addAttribute("qtdSerie", serieService.obterQtd());
         model.addAttribute("qtdAvaliacao", avaliacaoService.obterQtd());
-        model.addAttribute("qtdConteudo", filmeService.obterQtd() + serieService.obterQtd());
+        model.addAttribute("qtdConteudo", conteudoService.obterQtd());
 
         return "index";
     }
@@ -62,7 +61,7 @@ public class AppController {
 
     @GetMapping(value = "/conteudo/list")
     public String listarConteudo(Model model) {
-        model.addAttribute("listagem", null);
+        model.addAttribute("listagem", conteudoService.obterLista());
         return showHome(model);
     }
 

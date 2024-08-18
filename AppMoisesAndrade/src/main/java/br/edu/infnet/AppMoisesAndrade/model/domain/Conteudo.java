@@ -1,14 +1,25 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "TConteudo")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Conteudo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
     private String genero;
     private int anolancamento;
     private int duracao;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idConteudo")
     private List<Avaliacao> avaliacoes;
 
     public Conteudo() {

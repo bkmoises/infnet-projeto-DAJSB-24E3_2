@@ -30,6 +30,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -47,8 +48,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>3.3.2</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -68,23 +67,9 @@
 			<scope>runtime</scope>
 		</dependency>
 
-			<!-- Dependência principal do Spring Boot -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-			</dependency>
-
-			<!-- Dependência do Thymeleaf -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			</dependency>
-
-			<!-- Dependência do Spring Boot para testes -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-test</artifactId>
-				<scope>test</scope>
 			</dependency>
 
 		<dependency>
@@ -105,13 +90,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.0.0-M1</version> <!-- Verifique se esta versão ou outra mais recente está disponível -->
+				<version>3.0.0-M1</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.9.1</version> <!-- Verifique se esta versão ou outra mais recente está disponível -->
+				<version>3.9.1</version>
 			</plugin>
 
 		</plugins>

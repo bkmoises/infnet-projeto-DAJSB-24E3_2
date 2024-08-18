@@ -1,35 +1,33 @@
 package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
+import br.edu.infnet.AppMoisesAndrade.model.repository.AvaliacaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class AvaliacaoService {
-    private Map<Integer, Avaliacao> mapa = new HashMap<Integer, Avaliacao>();
-    private Integer id = 0;
+
+    @Autowired
+    private AvaliacaoRepository avaliacaoRepository;
 
     public void incluir(Avaliacao avaliacao) {
-        avaliacao.setId(id++);
-        mapa.put(avaliacao.getId(), avaliacao);
+        avaliacaoRepository.save(avaliacao);
     }
 
-    public Collection<Avaliacao> obterLista(){
-        return mapa.values();
+    public Iterable<Avaliacao> obterLista(){
+        return avaliacaoRepository.findAll();
     }
 
     public Avaliacao obterPorId(Integer id) {
-        return mapa.get(id);
+        return avaliacaoRepository.findById(id).orElse(null);
     }
 
     public void  remover(Integer id) {
-        mapa.remove(id);
+        avaliacaoRepository.deleteById(id);
     }
 
-    public Integer obterQtd() {
-        return mapa.size();
+    public long obterQtd() {
+        return avaliacaoRepository.count();
     }
 }

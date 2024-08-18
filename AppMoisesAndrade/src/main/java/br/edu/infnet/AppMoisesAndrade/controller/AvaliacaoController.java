@@ -5,8 +5,6 @@ import br.edu.infnet.AppMoisesAndrade.model.service.AvaliacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 public class AvaliacaoController {
 
@@ -14,7 +12,7 @@ public class AvaliacaoController {
     private AvaliacaoService avaliacaoService;
 
     @GetMapping(value = "/avaliacao")
-    public Collection<Avaliacao> listarTodos() {
+    public Iterable<Avaliacao> listarTodos() {
         return avaliacaoService.obterLista();
     }
 
