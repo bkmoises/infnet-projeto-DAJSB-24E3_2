@@ -27,6 +27,7 @@ public class AppController {
         model.addAttribute("qtdFilme", filmeService.obterQtd());
         model.addAttribute("qtdSerie", serieService.obterQtd());
         model.addAttribute("qtdAvaliacao", avaliacaoService.obterQtd());
+        model.addAttribute("qtdConteudo", filmeService.obterQtd() + serieService.obterQtd());
 
         return "index";
     }
@@ -59,11 +60,10 @@ public class AppController {
         return showHome(model);
     }
 
-//    @GetMapping(value = "/conteudo/list")
-//    public String listarConteudo(Model model) {
-//        model.addAttribute("listagem", conteudoService.obterLista());
-//
-//        return showHome(model);
-//    }
+    @GetMapping(value = "/conteudo/list")
+    public String listarConteudo(Model model) {
+        model.addAttribute("listagem", null);
+        return showHome(model);
+    }
 
 }
