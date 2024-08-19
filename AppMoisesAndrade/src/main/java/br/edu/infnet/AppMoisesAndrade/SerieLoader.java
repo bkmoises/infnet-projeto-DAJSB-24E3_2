@@ -1,7 +1,6 @@
 package br.edu.infnet.AppMoisesAndrade;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
-import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Serie;
 import br.edu.infnet.AppMoisesAndrade.model.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Component
-@Order(3)
+@Order(2)
 public class SerieLoader implements ApplicationRunner {
 
     @Autowired
@@ -25,54 +23,29 @@ public class SerieLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
-
         FileReader file = new FileReader("serie.txt");
         BufferedReader data = new BufferedReader(file);
 
         String linha = data.readLine();
         String[] campos = null;
 
-        Cliente cliente = null;
-        Avaliacao avaliacao = null;
-        Serie serie  = null;
-
         while(linha != null) {
 
             campos = linha.split(";");
 
-            switch (campos[0].toUpperCase()) {
-                case "C":
-                    cliente = new Cliente();
-                    cliente.setNome(campos[1]);
-                    cliente.setCpf(campos[2]);
-                    cliente.setEmail(campos[3]);
-                    cliente.setDataNascimento(dateFormat.parse(campos[4]));
-                    cliente.setAssinante(Boolean.valueOf(campos[5]));
-                    break;
+            Avaliacao avaliacao = new Avaliacao();
+            avaliacao.setId(Integer.valueOf(campos[6]));
 
-                case "A":
-                    avaliacao = new Avaliacao();
-                    avaliacao.setNota(Float.valueOf(campos[1]));
-                    avaliacao.setComentario(campos[2]);
-                    avaliacao.setCliente(cliente);
-                    serie.getAvaliacoes().add(avaliacao);
-                    break;
+            Serie serie = new Serie();
+            serie.setTitulo(campos[0]);
+            serie.setGenero(campos[1]);
+            serie.setAnolancamento(Integer.valueOf(campos[2]));
+            serie.setDuracao(Integer.valueOf(campos[3]));
+            serie.setTemporada(Integer.valueOf(campos[4]));
+            serie.setEpisodio(Integer.valueOf(campos[5]));
+            serie.setAvaliacoes(Arrays.asList(avaliacao));
 
-                case "S":
-                    serie = new Serie();
-                    serie.setTitulo(campos[1]);
-                    serie.setGenero(campos[2]);
-                    serie.setAnolancamento(Integer.valueOf(campos[3]));
-                    serie.setDuracao(Integer.valueOf(campos[4]));
-                    serie.setTemporada(Integer.valueOf(campos[5]));
-                    serie.setEpisodio(Integer.valueOf(campos[6]));
-
-                    serieService.incluir(serie);
-
-                default:
-                    break;
-            }
+            serieService.incluir(serie);
 
             linha = data.readLine();
         }

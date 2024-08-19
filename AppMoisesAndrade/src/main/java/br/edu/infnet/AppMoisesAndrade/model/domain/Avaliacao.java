@@ -16,6 +16,10 @@ public class Avaliacao {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "idConteudo")
+    private Conteudo conteudo;
+
     public Avaliacao() {
 
     }
@@ -52,6 +56,14 @@ public class Avaliacao {
         this.id = id;
     }
 
+    public Conteudo getConteudo() {
+        return conteudo;
+    }
+
+    public void setConteudo(Conteudo conteudo) {
+        this.conteudo = conteudo;
+    }
+
     @Override
     public String toString() {
         return "Avaliacao{" +
@@ -59,6 +71,7 @@ public class Avaliacao {
                 ", nota='" + nota + '\'' +
                 ", comentario='" + comentario + '\'' +
                 ", cliente='" + cliente + '\'' +
+                ", " + conteudo + '\'' +
                 "}";
     }
 }

@@ -15,6 +15,10 @@ public class ConteudoService {
         return conteudoRepository.findAll();
     }
 
+    public Conteudo obterPorId(Integer id){
+        return conteudoRepository.findById(id).orElse(null);
+    }
+
     public Long obterQtd() {
         return conteudoRepository.count();
     }

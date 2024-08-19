@@ -18,12 +18,10 @@ public abstract class Conteudo {
     private int anolancamento;
     private int duracao;
 
-    @Transient
-    private List<Avaliacao> avaliacoes;
+    @OneToMany(mappedBy = "conteudo", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
 
-    public Conteudo() {
-        avaliacoes = new ArrayList<Avaliacao>();
-    }
+    public Conteudo() {}
 
     public String getTitulo() {
         return titulo;
@@ -75,11 +73,13 @@ public abstract class Conteudo {
 
     @Override
     public String toString() {
-        return "id='" + id + '\'' +
+        return "Conteudo{" +
+                "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", genero='" + genero + '\'' +
-                ", anoLancamento='" + anolancamento + '\'' +
-                ", duracao='" + duracao + '\'' +
-                ", avaliacoes='Qtd: " + avaliacoes.size() + "', '" + avaliacoes + '\'';
+                ", anoLancamento=" + anolancamento +
+                ", duracao=" + duracao +
+                ", avaliacoes=Qtd: " + avaliacoes.size() +
+                '}';
     }
 }
