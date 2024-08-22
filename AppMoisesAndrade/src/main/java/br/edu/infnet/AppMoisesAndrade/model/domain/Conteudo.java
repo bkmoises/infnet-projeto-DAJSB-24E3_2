@@ -8,6 +8,8 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "TConteudo")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -30,6 +32,7 @@ public abstract class Conteudo {
     private int duracao;
 
     @OneToMany(mappedBy = "conteudo", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JsonManagedReference
     private List<Avaliacao> avaliacoes = new ArrayList<>();
 
     public Conteudo() {}

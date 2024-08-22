@@ -6,6 +6,8 @@ import jakarta.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "TCliente")
 public class Cliente {
@@ -30,8 +32,8 @@ public class Cliente {
 
     private Boolean assinante;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "idCliente")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "cliente")
+    @JsonManagedReference
     private List<Avaliacao> avaliacoes;
 
     @OneToOne(cascade = CascadeType.PERSIST)

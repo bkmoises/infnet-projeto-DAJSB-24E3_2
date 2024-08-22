@@ -1,5 +1,7 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -20,10 +22,12 @@ public class Avaliacao {
 
     @ManyToOne
     @JoinColumn(name = "idCliente")
+    @JsonBackReference
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "idConteudo")
+    @JsonBackReference
     private Conteudo conteudo;
 
     public Avaliacao() {
