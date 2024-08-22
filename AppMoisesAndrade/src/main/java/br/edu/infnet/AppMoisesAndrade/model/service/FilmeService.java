@@ -12,7 +12,11 @@ public class FilmeService {
     private FilmeRepository filmeRepository;
 
     public void incluir(Filme filme) {
-        filmeRepository.save(filme);
+        try {
+            filmeRepository.save(filme);
+        } catch (Exception e) {
+            System.err.println("[ERRO] " + e.getMessage());
+        }
     }
 
     public Iterable<Filme> obterLista(){

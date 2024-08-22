@@ -1,13 +1,13 @@
-Moisés;123456789;mail@mail.com;28081996;true
-Ana Silva;987654321;ana.silva@mail.com;15051992;true
-Carlos Mendes;112233445;cmendes@mail.com;01101988;true
-Julia Costa;223344556;julia.costa@mail.com;22031990;true
-Marcos Pereira;334455667;marcos.pereira@mail.com;14021985;true
-Luana Rocha;445566778;luana.rocha@mail.com;05061994;true
-Ricardo Almeida;556677889;ricardo.almeida@mail.com;29051983;true
-Fernanda Lima;667788990;fernanda.lima@mail.com;10011988;true
-Eduardo Santos;778899001;eduardo.santos@mail.com;24081979;true
-Camila Oliveira;889900112;camila.oliveira@mail.com;17041991;true
-Gabriel Ferreira;990011223;gabriel.ferreira@mail.com;06071987;true
-Mariana Souza;101112334;mariana.souza@mail.com;04051989;true
-Lucas Martins;212223334;lucas.martins@mail.com;30011993;true
+Moisés;12345678901;mail@mail.com;28081996;true;01001-000;Rua das Flores;Apto 101;Centro;São Paulo;SP
+Ana Silva;09876543210;ana.silva@mail.com;15051992;true;20040-001;Avenida Brasil;Bloco B;Copacabana;Rio de Janeiro;RJ
+Carlos Mendes;01122334455;cmendes@mail.com;01101988;true;30110-002;Rua da Liberdade;Casa 5;Savassi;Belo Horizonte;MG
+Julia Costa;02233445566;julia.costa@mail.com;22031990;true;40020-003;Largo do Pelourinho;Apto 302;Centro Histórico;Salvador;BA
+Marcos Pereira;03344556677;marcos.pereira@mail.com;14021985;true;50030-004;Rua da Aurora;Sala 201;Boa Vista;Recife;PE
+Luana Rocha;04455667788;luana.rocha@mail.com;05061994;true;60040-005;Avenida Beira Mar;Casa 12;Meireles;Fortaleza;CE
+Ricardo Almeida;05566778899;ricardo.almeida@mail.com;29051983;true;70050-006;Setor Comercial Sul;Bloco C;Asa Sul;Brasília;DF
+Fernanda Lima;06677889900;fernanda.lima@mail.com;10011988;true;80060-007;Rua XV de Novembro;Apto 703;Centro;Curitiba;PR
+Eduardo Santos;07788990011;eduardo.santos@mail.com;24081979;true;90070-008;Avenida Ipiranga;Cobertura;Moinhos de Vento;Porto Alegre;RS
+Camila Oliveira;08899001122;camila.oliveira@mail.com;17041991;true;95080-009;Rua Sinimbu;Sala 4;Centro;Caxias do Sul;RS
+Gabriel Ferreira;09900112233;gabriel.ferreira@mail.com;06071987;true;96090-010;Avenida Bento Gonçalves;Apto 405;Três Vendas;Pelotas;RS
+Mariana Souza;01011123344;mariana.souza@mail.com;04051989;true;97010-011;Rua Dr. Bozano;Casa 21;Centro;Santa Maria;RS
+Lucas Martins;02122233344;lucas.martins@mail.com;30011993;true;88020-012;Rua Felipe Schmidt;Apto 502;Centro;Florianópolis;SC

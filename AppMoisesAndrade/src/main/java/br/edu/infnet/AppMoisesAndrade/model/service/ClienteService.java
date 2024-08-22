@@ -12,7 +12,11 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public void incluir(Cliente cliente) {
-        clienteRepository.save(cliente);
+        try {
+            clienteRepository.save(cliente);
+        } catch (Exception e) {
+            System.err.println("[ERRO] " + e.getMessage());
+        }
     }
 
     public Iterable<Cliente> obterLista(){

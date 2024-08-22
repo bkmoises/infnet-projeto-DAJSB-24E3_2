@@ -1,6 +1,9 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TAvaliacao")
@@ -9,7 +12,11 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private float  nota;
+
+    @DecimalMin(value = "0.5")
+    @DecimalMax(value = "5.0")
+    private float nota;
+
     private String comentario;
 
     @ManyToOne

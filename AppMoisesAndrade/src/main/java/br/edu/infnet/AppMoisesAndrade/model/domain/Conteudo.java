@@ -1,6 +1,9 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +16,17 @@ public abstract class Conteudo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank
     private String titulo;
+
+    @NotBlank
     private String genero;
+
+    @NotNull
     private int anolancamento;
+
+    @Min(value = 1)
     private int duracao;
 
     @OneToMany(mappedBy = "conteudo", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)

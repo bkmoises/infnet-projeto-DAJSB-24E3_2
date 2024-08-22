@@ -12,7 +12,11 @@ public class AvaliacaoService {
     private AvaliacaoRepository avaliacaoRepository;
 
     public void incluir(Avaliacao avaliacao) {
-        avaliacaoRepository.save(avaliacao);
+        try {
+            avaliacaoRepository.save(avaliacao);
+        } catch (Exception e) {
+            System.err.println("[ERRO] " + e.getMessage());
+        }
     }
 
     public Iterable<Avaliacao> obterLista(){

@@ -1,6 +1,7 @@
 package br.edu.infnet.AppMoisesAndrade;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
+import br.edu.infnet.AppMoisesAndrade.model.domain.Endereco;
 import br.edu.infnet.AppMoisesAndrade.model.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -32,6 +33,14 @@ public class ClienteLoader implements ApplicationRunner {
         while(linha != null) {
             campos = linha.split(";");
 
+            Endereco endereco = new Endereco();
+            endereco.setCep(campos[5]);
+            endereco.setLogadouro(campos[6]);
+            endereco.setComplemento(campos[7]);
+            endereco.setBairro(campos[8]);
+            endereco.setLocalidade(campos[9]);
+            endereco.setUf(campos[10]);
+
             Cliente cliente = new Cliente();
 
             cliente.setNome(campos[0]);
@@ -39,6 +48,7 @@ public class ClienteLoader implements ApplicationRunner {
             cliente.setEmail(campos[2]);
             cliente.setDataNascimento(dateFormat.parse(campos[3]));
             cliente.setAssinante(Boolean.valueOf(campos[4]));
+            cliente.setEndereco(endereco);
 
             clienteService.incluir(cliente);
 

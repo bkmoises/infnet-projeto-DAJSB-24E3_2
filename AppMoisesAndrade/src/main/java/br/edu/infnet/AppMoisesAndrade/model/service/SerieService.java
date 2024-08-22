@@ -7,11 +7,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SerieService {
+
     @Autowired
     private SerieRepository serieRepository;
 
     public void incluir(Serie serie) {
-        serieRepository.save(serie);
+        try {
+            serieRepository.save(serie);
+        } catch (Exception e) {
+            System.err.println("[ERRO] " + e.getMessage());
+        }
     }
 
     public Iterable<Serie> obterLista(){

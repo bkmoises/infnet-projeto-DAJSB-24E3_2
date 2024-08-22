@@ -2,12 +2,20 @@ package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Value;
 
 
 @Entity
 @Table(name = "TSerie")
 public class Serie extends Conteudo {
+
+    @Min(value = 1, message = "O valor de temporada não pode ser menor que 1")
     private int temporada;
+
+    @Min(value = 1, message = "O valor de episodio não pode ser menor que 1")
     private int episodio;
 
     public Serie() {

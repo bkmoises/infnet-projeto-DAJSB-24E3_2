@@ -1,6 +1,7 @@
 package br.edu.infnet.AppMoisesAndrade.model.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.util.Date;
 import java.util.List;
@@ -11,16 +12,31 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank(message = "O campo nome é obrigatório")
     private String nome;
+
+    @Column(unique = true)
+    @NotBlank(message = "O campo cpf é obrigatório")
+    @Size(min = 11, max = 11, message = "O CPF fornecido é invalido")
     private String cpf;
+
+    @NotBlank(message = "O campo email é obrigatório")
+    @Email(message = "O email fornecido é invalido")
     private String email;
+
+    @NotNull(message = "O campo data de nascimento é obrigatório")
     private Date dataNascimento;
+
     private Boolean assinante;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idCliente")
     private List<Avaliacao> avaliacoes;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idEndereco")
+    private Endereco endereco;
 
     public Cliente() {
 
@@ -80,6 +96,14 @@ public class Cliente {
 
     public void setAvaliacoes(List<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
