@@ -50,6 +50,8 @@ public class SerieLoader implements ApplicationRunner {
             linha = data.readLine();
         }
 
+        data.close();
+
         for(Serie s : serieService.obterLista()) {
             System.out.println("[SÉRIE] " + s);
         }

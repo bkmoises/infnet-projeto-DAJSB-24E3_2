@@ -3,7 +3,6 @@ package br.edu.infnet.AppMoisesAndrade.model.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TAvaliacao")

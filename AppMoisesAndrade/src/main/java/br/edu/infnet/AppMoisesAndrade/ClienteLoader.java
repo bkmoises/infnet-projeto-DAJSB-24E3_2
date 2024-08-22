@@ -54,6 +54,8 @@ public class ClienteLoader implements ApplicationRunner {
 
             linha = data.readLine();
         }
+        
+        data.close();
 
         for(Cliente cliente : clienteService.obterLista()) {
             System.out.println("[CLIENTE] " + cliente);

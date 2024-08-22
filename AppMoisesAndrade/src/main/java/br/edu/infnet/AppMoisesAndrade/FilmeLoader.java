@@ -49,6 +49,8 @@ public class FilmeLoader implements ApplicationRunner {
             linha = data.readLine();
         }
 
+        data.close();
+        
         for(Filme f : filmeService.obterLista()) {
             System.out.println("[FILME] " + f);
         }
