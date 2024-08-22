@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.text.SimpleDateFormat;
 
 
 @Component
@@ -32,7 +31,6 @@ public class AvaliacaoLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
         FileReader file = new FileReader("avaliacao.txt");
         BufferedReader data = new BufferedReader(file);
@@ -57,6 +55,8 @@ public class AvaliacaoLoader implements ApplicationRunner {
 
             linha = data.readLine();
         }
+        
+        data.close();
 
         for (Avaliacao avaliacao : avaliacaoService.obterLista()) {
             System.out.println("[AVALIACAO] " + avaliacao);
