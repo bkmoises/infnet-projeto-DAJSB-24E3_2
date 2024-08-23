@@ -23,7 +23,7 @@ public class FilmeLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        FileReader file = new FileReader("filme.txt");
+        FileReader file = new FileReader("files/filme.txt");
         BufferedReader data = new BufferedReader(file);
 
         String linha = data.readLine();

@@ -22,7 +22,7 @@ public class ClienteLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file = new FileReader("cliente.txt");
+        FileReader file = new FileReader("files/cliente.txt");
         BufferedReader data = new BufferedReader(file);
 
         String linha = data.readLine();

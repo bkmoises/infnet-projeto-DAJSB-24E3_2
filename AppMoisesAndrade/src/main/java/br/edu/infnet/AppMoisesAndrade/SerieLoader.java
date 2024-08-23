@@ -23,7 +23,7 @@ public class SerieLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        FileReader file = new FileReader("serie.txt");
+        FileReader file = new FileReader("files/serie.txt");
         BufferedReader data = new BufferedReader(file);
 
         String linha = data.readLine();

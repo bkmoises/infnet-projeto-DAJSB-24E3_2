@@ -49,26 +49,6 @@
 					"response": []
 				},
 				{
-					"name": "remover",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/avaliacao/0",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"avaliacao",
-								"0"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "incluir",
 					"request": {
 						"method": "POST",
@@ -91,6 +71,89 @@
 							"port": "8080",
 							"path": [
 								"avaliacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remover",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/avaliacao/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacao",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorNota",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/avaliacao/nota/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacao",
+								"nota",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorClienteId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/avaliacao/cliente/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacao",
+								"cliente",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorConteudoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/avaliacao/conteudo/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacao",
+								"conteudo",
+								"3"
 							]
 						}
 					},
@@ -187,6 +250,69 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "obterPorCpf",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cliente/cpf/09876543210",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"cpf",
+								"09876543210"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorNome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cliente/nome/Marcos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"nome",
+								"Marcos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorAssinante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cliente/assinante/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"assinante",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -279,6 +405,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "obterListaPorGenero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/serie/genero/Drama",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"serie",
+								"genero",
+								"Drama"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorTitulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/serie/titulo/Stranger",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"serie",
+								"titulo",
+								"Stranger"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -367,6 +535,48 @@
 							"path": [
 								"filme",
 								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorGenero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/filme/genero/Terror",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"filme",
+								"genero",
+								"Terror"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obterListaPorTitulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/filme/titulo/Chefão",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"filme",
+								"titulo",
+								"Chefão"
 							]
 						}
 					},
