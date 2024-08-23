@@ -2,7 +2,11 @@ package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.repository.ClienteRepository;
+
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +24,7 @@ public class ClienteService {
     }
 
     public Iterable<Cliente> obterLista(){
-        return clienteRepository.findAll();
+        return clienteRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
     }
 
     public Cliente obterPorId(Integer id) {
@@ -33,5 +37,17 @@ public class ClienteService {
 
     public Long obterQtd() {
         return clienteRepository.count();
+    }
+
+    public Cliente obterPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf);
+    }
+
+    public Collection<Cliente> obterListaPorNome(String nome) {
+        return clienteRepository.findByNomeContaining(nome);
+    }
+
+    public Collection<Cliente> obterListaPorAssinante() {
+        return clienteRepository.findByAssinanteTrue();
     }
 }

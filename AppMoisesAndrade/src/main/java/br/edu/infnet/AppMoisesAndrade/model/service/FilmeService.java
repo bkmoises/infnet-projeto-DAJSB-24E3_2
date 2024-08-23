@@ -2,7 +2,11 @@ package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
 import br.edu.infnet.AppMoisesAndrade.model.repository.FilmeRepository;
+
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +24,7 @@ public class FilmeService {
     }
 
     public Iterable<Filme> obterLista(){
-        return filmeRepository.findAll();
+        return filmeRepository.findAll(Sort.by(Sort.Direction.ASC, "titulo"));
     }
 
     public Filme obterPorId(Integer id) {
@@ -33,5 +37,13 @@ public class FilmeService {
 
     public Long obterQtd() {
         return filmeRepository.count();
+    }
+
+    public Collection<Filme> obterListaPorTitulo(String titulo) {
+        return filmeRepository.findByTituloContaining(titulo);
+    }
+
+    public Collection<Filme> obterListaPorGenero(String genero) {
+        return filmeRepository.findByGenero(genero);
     }
 }

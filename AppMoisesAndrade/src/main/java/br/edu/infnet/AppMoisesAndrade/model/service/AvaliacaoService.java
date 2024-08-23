@@ -2,7 +2,11 @@ package br.edu.infnet.AppMoisesAndrade.model.service;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Avaliacao;
 import br.edu.infnet.AppMoisesAndrade.model.repository.AvaliacaoRepository;
+
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +24,7 @@ public class AvaliacaoService {
     }
 
     public Iterable<Avaliacao> obterLista(){
-        return avaliacaoRepository.findAll();
+        return avaliacaoRepository.findAll(Sort.by(Sort.Direction.DESC, "nota"));
     }
 
     public Avaliacao obterPorId(Integer id) {
@@ -33,5 +37,17 @@ public class AvaliacaoService {
 
     public long obterQtd() {
         return avaliacaoRepository.count();
+    }
+
+    public Collection<Avaliacao> obterListaPorNota(float nota) {
+        return avaliacaoRepository.findByNota(nota);
+    }
+
+    public Collection<Avaliacao> obterListaPorClienteId(Integer id) {
+        return avaliacaoRepository.findByClienteId(id);
+    }
+
+    public Collection<Avaliacao> obterListaPorConteudoId(Integer id) {
+        return avaliacaoRepository.findByConteudoId(id);
     }
 }

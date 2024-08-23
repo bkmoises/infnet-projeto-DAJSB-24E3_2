@@ -2,6 +2,9 @@ package br.edu.infnet.AppMoisesAndrade.controller;
 
 import br.edu.infnet.AppMoisesAndrade.model.domain.Filme;
 import br.edu.infnet.AppMoisesAndrade.model.service.FilmeService;
+
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +35,15 @@ public class FilmeController {
         filmeService.remover(id);
         return "Elemento id \"" + id + "\" foi removido com sucesso!";
     }
+
+    @GetMapping(value = "/filme/titulo/{titulo}")
+    public Collection<Filme> obterListaPorTitulo(@PathVariable String titulo) {
+        return filmeService.obterListaPorTitulo(titulo);
+    }
+
+    @GetMapping(value = "/filme/genero/{genero}")
+    public Collection<Filme> obterListaPorGenero(@PathVariable String genero) {
+        return filmeService.obterListaPorGenero(genero);
+    }
+
 }
