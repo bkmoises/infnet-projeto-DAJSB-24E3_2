@@ -15,7 +15,7 @@ public class Endereco {
     private String cep;
 
     @NotBlank
-    private String logadouro;
+    private String logradouro;
 
     private String complemento;
 
@@ -40,12 +40,12 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getLogadouro() {
-        return logadouro;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setLogadouro(String logadouro) {
-        this.logadouro = logadouro;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getComplemento() {

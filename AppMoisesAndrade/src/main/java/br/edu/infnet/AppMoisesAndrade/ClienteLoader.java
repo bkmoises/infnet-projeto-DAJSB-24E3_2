@@ -3,6 +3,8 @@ package br.edu.infnet.AppMoisesAndrade;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Cliente;
 import br.edu.infnet.AppMoisesAndrade.model.domain.Endereco;
 import br.edu.infnet.AppMoisesAndrade.model.service.ClienteService;
+import br.edu.infnet.AppMoisesAndrade.model.service.EnderecoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,6 +22,9 @@ public class ClienteLoader implements ApplicationRunner {
     @Autowired
     private ClienteService clienteService;
 
+    @Autowired
+    private EnderecoService enderecoService;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         FileReader file = new FileReader("files/cliente.txt");
@@ -33,13 +38,9 @@ public class ClienteLoader implements ApplicationRunner {
         while(linha != null) {
             campos = linha.split(";");
 
-            Endereco endereco = new Endereco();
-            endereco.setCep(campos[5]);
-            endereco.setLogadouro(campos[6]);
-            endereco.setComplemento(campos[7]);
-            endereco.setBairro(campos[8]);
-            endereco.setLocalidade(campos[9]);
-            endereco.setUf(campos[10]);
+            Endereco endereco = enderecoService.obterPorCep(campos[5]);
+
+            System.err.print(endereco);
 
             Cliente cliente = new Cliente();
 

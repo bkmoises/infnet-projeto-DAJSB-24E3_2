@@ -116,7 +116,8 @@ public class Cliente {
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
                 ", dataNascimento='" + dataNascimento + '\'' +
-                ", assinante=" + (assinante == true ? "'Sim'" : "'Não'") +
+                ", assinante='" + (assinante == true ? "'Sim'" : "'Não'") + '\'' +
+                ", cep='" + endereco.getCep() + '\'' +
                 '}';
     }
 }
