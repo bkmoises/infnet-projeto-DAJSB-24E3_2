@@ -34,7 +34,7 @@ public class AppController {
     @GetMapping(value = "/cliente/list")
     public String listarCliente(Model model) {
 
-        model.addAttribute("titulo", "Listagem de Clientes");
+        model.addAttribute("titulo", "Lista de Clientes");
         model.addAttribute("listagem", clienteService.obterLista());
 
         return showHome(model);
@@ -43,7 +43,7 @@ public class AppController {
     @GetMapping(value = "/filme/list")
     public String listarFilme(Model model) {
 
-        model.addAttribute("titulo", "Listagem de Filmes");
+        model.addAttribute("titulo", "Lista de Filmes");
         model.addAttribute("listagem", filmeService.obterLista());
 
         return showHome(model);
@@ -52,7 +52,7 @@ public class AppController {
     @GetMapping(value = "/serie/list")
     public String listarSerie(Model model) {
 
-        model.addAttribute("titulo", "Listagem de Série");
+        model.addAttribute("titulo", "Lista de Série");
         model.addAttribute("listagem", serieService.obterLista());
 
         return showHome(model);
@@ -61,7 +61,7 @@ public class AppController {
     @GetMapping(value = "/avaliacao/list")
     public String listarAvaliacao(Model model) {
 
-        model.addAttribute("titulo", "Listagem de Avaliações");
+        model.addAttribute("titulo", "Lista de Avaliações");
         model.addAttribute("listagem", avaliacaoService.obterLista());
 
         return showHome(model);
@@ -70,7 +70,7 @@ public class AppController {
     @GetMapping(value = "/conteudo/list")
     public String listarConteudo(Model model) {
 
-        model.addAttribute("titulo", "Listagem de Conteúdos");
+        model.addAttribute("titulo", "Lista de Conteúdos");
         model.addAttribute("listagem", conteudoService.obterLista());
 
         return showHome(model);
