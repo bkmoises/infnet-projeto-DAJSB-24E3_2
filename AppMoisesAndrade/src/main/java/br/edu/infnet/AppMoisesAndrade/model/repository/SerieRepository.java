@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SerieRepository extends CrudRepository<Serie, Integer> {
+    
     Collection<Serie> findAll(Sort by);
 
     Collection<Serie> findByTituloContaining(String titulo);
