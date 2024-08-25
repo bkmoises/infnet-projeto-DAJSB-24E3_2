@@ -1,3 +1,4 @@
+
 # Projeto Infnet-DAJSB-24E3_2
 
 ## Visão Geral
@@ -17,7 +18,7 @@ Para começar, você precisa clonar o repositório do GitHub. Abra seu terminal 
 ```bash
 git clone https://github.com/bkmoises/infnet-projeto-DAJSB-24E3_2.git
 cd infnet-projeto-DAJSB-24E3_2
-git checkout terceira-entrega
+git checkout quarta-entrega
 ```
 
 ## Configuração do Ambiente
@@ -59,6 +60,32 @@ git checkout terceira-entrega
 4. **Utilizando o projeto**:
     - Abra seu navegador e acesse a URL [http://localhost:8080/](http://localhost:8080/)
   
+### Acessando o banco de Dados
+
+1. **Verifique se a aplicação está rodando**:
+
+	- Para acessar o banco de dados H2, a aplicação precisa estar em execução. Certifique-se de que o servidor Spring Boot está rodando.
+
+2. **Acesse o Console do H2**:
+
+	- Abra seu navegador de internet e vá para o seguinte endereço: http://localhost:8080/h2-console
+
+3. **Configurar o Console H2**:
+
+	- Na tela de login do console H2, você precisará fornecer algumas informações para conectar ao banco de dados. Use as seguintes configurações padrão:
+
+		-   **JDBC URL**: `jdbc:h2:~/appmoisesandradedb`
+		-   **User Name**: `sa`
+		-   **Password**: (deixe em branco)
+
+		**Nota**: A URL do banco de dados pode variar dependendo de como está configurado o `application.properties`. Se a URL estiver diferente, ajuste a configuração de acordo.
+
+4. **Conectar e Navegar no Banco de Dados**:
+
+	- Clique no botão "Connect" para acessar o console H2.
+
+		Depois de conectar, você verá uma interface onde pode executar consultas SQL e visualizar as tabelas e dados armazenados no banco de dados em memória.
+
 ### Importando Collection no Postman
 
 
